@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <input type="checkbox" onclick="isEditable()" name="txtPwEditable" id="txtPwEditable">
                             <label for="memberPassField">Change Password?</label>
-                            <input type="password" name="new_password" id="memberPassField" class="form-control" value="samplepassword12345"  disabled>
+                            <input type="password" name="new_password" id="memberPassField" class="form-control" value="samplepassword12345"  required disabled>
                         </div>
 
                         <div class="form-group">
@@ -39,11 +39,12 @@
                         @endif
 
                         @if( session('msg') )
-                        <div class="alert alert-success fade show alert-dismissible">
-                            <p>{{ session('msg') }}</p>
+                        <div class="alert alert-success alert-with-icon fade show alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
+                            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                            <span data-notify="message"> {{ session('msg') }} </span>
                         </div>
                         @endif
                     </div>
