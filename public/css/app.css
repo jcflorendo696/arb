@@ -11366,8 +11366,8 @@ a.text-dark:focus {
   right: 0;
 }
 
-.card-header{
-
+.alert p{
+  margin-bottom: 0;
 }
 
 body{

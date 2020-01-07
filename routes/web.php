@@ -34,3 +34,4 @@ Route::get('/roles', 'RolesController@index')->name('roles');
 Route::get('/user-management', 'UsersController@index')->name('users');
 Route::post('/role/add','RolesController@addRole');
 Route::post('/role/delete','RolesController@deleteRole');
+Route::post('/settings/changepass','SettingsController@updatePassword');
