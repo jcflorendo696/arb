@@ -11373,3 +11373,8 @@ a.text-dark:focus {
 body{
   background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
 }
+
+.role-list-rows,
+.user-masterlist-rows{
+  cursor: pointer;
+}

@@ -39,4 +39,25 @@ class RolesController extends Controller
 
         return redirect('roles');
     }
+
+    public function updateRole(Request $request){
+        
+
+        $response = array(
+            'status' => 'success',
+            'name' => $request->input('name'),
+            'desc' => $request->input('desc'),
+        );
+
+        $updateUser = array(
+            'role'          => $request->input('name'),
+            'description'   => $request->input('desc'),
+        );
+
+        $affected = DB::table('roles')
+                        ->where('id', $request->input('id'))
+                        ->update( $updateUser );
+
+        return response()->json($response);
+    }
 }

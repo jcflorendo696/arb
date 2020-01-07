@@ -25,6 +25,7 @@
   <title>
     Now UI Dashboard by Creative Tim
   </title>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -88,7 +89,7 @@
             </a>
           </li>
 
-          <li>
+          <!-- <li>
           <a href=" # ">
               <i class="now-ui-icons business_chart-bar-32"></i>
               <p>Expense Categories</p>
@@ -100,7 +101,7 @@
               <i class="now-ui-icons business_money-coins"></i>
               <p>Expenses</p>
             </a>
-          </li>
+          </li> -->
           @else
           @endif
 
@@ -222,7 +223,7 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
   <!-- Chart JS -->
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -238,6 +239,7 @@
     });
   </script>
 
+  <!-- Main Js -->
   <script src="{{ asset('js/dashboard.js') }}" defer></script>
 </body>
 

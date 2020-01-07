@@ -37081,9 +37081,3 @@ module.exports = __webpack_require__(/*! D:\xampp\htdocs\arb\resources\sass\app.
 
 
 
-/**
- *
- *  Expense Manager Scripts
- *
- **/
-

@@ -1,48 +1,64 @@
+<!-- 
+  *  New Expense Modal - 'members'
+  -->
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="generic-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        
+        @if( Route::current()->getName() == "dashboard" )
         <h5 class="modal-title" id="exampleModalLongTitle">New Expense</h5>
+        @elseif ( Route::current()->getName() == "users")
+        <h5 class="modal-title" id="exampleModalLongTitle">Add New User</h5>
+        @endif
+
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form action="/expense/add" method="post">
-
-            <div class="row">
-                <div class="col">
-                    <div class="form-group"><input type="text" class="form-control" name="amount" placeholder="Amount..."></div>
-                </div>
-
-                <div class="col">
-                    <div class="form-group"><input type="text" class="form-control" name="description" placeholder="Description..."></div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
+      
+            @if( Route::current()->getName() == "dashboard" )
+                @include('partials.forms.add_expense')
+            @elseif( Route::current()->getName() == "users")
+                @include('partials.forms.add_user')
+            @endif
+              <div class="row">
+                  <div class="col">
                     <div class="form-group">
-                        <label for="category">Category</label>
-                        <select name="category_id" id="category" class="form-control col-3">
-                            @foreach( $category as $category )
-                                <option value="{{ $category->name }}" >{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                      {{ csrf_field() }}
+                      @if( Route::current()->getName() == "users" )
+                      <button type="submit" id="btnCreateUser" class="btn btn-info">Create User</button>
+                      @elseif( Route::current()->getName() == "dashboard" )
+                      <button type="submit" id="btnAddExpense" class="btn btn-info">Add Expense</button>
+                      @endif
+                    </div>              
+                  </div>
                 </div>
-            </div>
+              </form>
 
-
-        
+              <div class="row">
+                  <div class="col-8 offset-2">
+                    @if( $errors->any() )
+                        <div class="alert alert-danger fade show alert-dismissible">
+                            @foreach( $errors->all() as $error )
+                                <p>{{ $error }}</p>
+                            @endforeach
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                  </div>
+              </div>
       </div>
+      
       <div class="modal-footer">
-            
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            
-        </form>
+          <small>© 2020 - Expense Manager.</small>
+      </div>
       </div>
       
     </div>

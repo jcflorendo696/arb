@@ -30,8 +30,13 @@ Route::post('/expense/delete','ExpensesController@deleteExpense');
 /**
  * Routes - 'admin' side
  */
-Route::get('/roles', 'RolesController@index')->name('roles');
 Route::get('/user-management', 'UsersController@index')->name('users');
+Route::post('/user/add', 'UsersController@addUser');
+Route::post('/user/delete', 'UsersController@deleteUser');
+
+Route::get('/roles', 'RolesController@index')->name('roles');
 Route::post('/role/add','RolesController@addRole');
 Route::post('/role/delete','RolesController@deleteRole');
+Route::post('/role/update','RolesController@updateRole');
+
 Route::post('/settings/changepass','SettingsController@updatePassword');

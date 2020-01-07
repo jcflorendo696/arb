@@ -8,7 +8,7 @@
                             
                             <h4 class="card-title">My Expenses</h4>
                             <p class="category">Track your daily expenses and see how it goes.</p>
-                            <button class="btn btn-info btnMemberAddExpense" data-toggle="modal" data-target="#exampleModalCenter">Add New Expense</button>
+                            <button class="btn btn-info btnMemberAddExpense" data-toggle="modal" data-target="#generic-modal">Add New Expense</button>
                         </div>
 
                         <div class="card-body">
