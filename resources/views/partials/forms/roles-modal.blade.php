@@ -31,7 +31,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="btnUpdateRole_{{ $role->id }}" value="{{ $role->id }}" class="btnUpdateRole btn btn-primary">Save changes</button>
+        <button type="button" id="btnUpdateRole_{{ $role->id }}" value="{{ $role->id }}" class="btnUpdateRole btn btn-primary">Save Changes</button>
       </div>
     </div>
   </div>

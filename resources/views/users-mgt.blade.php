@@ -25,21 +25,18 @@
 
             <tbody>
                 @foreach( $users as $user )
-                <tr class="user-masterlist-rows" data-toggle="modal" data-target="#update-modal{{ $user->id }}">
-                    <td>{{ $user->name}}</td>
-                    <td><a href="#">{{ $user->email}}</a></td>
-                    <td>{{ $user->getRole->role}}</td>
+                <tr class="user-masterlist-rows">
+                    <td id="name_{{$user->id}}" data-toggle="modal" data-target="#update-modal{{ $user->id }}">{{ $user->name}}</td>
+                    <td id="email_{{$user->id}}" data-toggle="modal" data-target="#update-modal{{ $user->id }}"><a href="#">{{ $user->email}}</a></td>
+                    <td id="role_{{$user->id}}" data-toggle="modal" data-target="#update-modal{{ $user->id }}">{{ $user->getRole->role}}</td>
                     <td> 
                     <form action="/user/delete" method="post">
                         {{ csrf_field() }}
-                        <button type="submit" id="btnDelete" value="{{ $user->id }}" class="btn btn-danger btn-sm" name="btnDelete">Delete <i class="fas fa-trash-alt"></i></button> 
+                        <button type="submit" id="btnDelete_{{ $user->id }}" value="{{ $user->id }}" class="btn btn-danger btn-sm" name="btnDelete">Delete <i class="fas fa-trash-alt"></i></button> 
                     </form>
                     </td>
                 </tr>
-                @include('partials.forms.update-modal', [ 
-                                    'user' => $user,
-                                    'roles' => $roles
-                                    ])
+                @include('partials.forms.update-modal')
                 @endforeach
             </tbody>
 

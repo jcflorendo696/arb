@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Now UI Dashboard by Creative Tim
+    {{ config('app.name', 'Laravel') }}
   </title>
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -89,13 +89,13 @@
             </a>
           </li>
 
-          <!-- <li>
+          <li>
           <a href=" # ">
               <i class="now-ui-icons business_chart-bar-32"></i>
               <p>Expense Categories</p>
             </a>
           </li>
-
+          <!-- 
           <li>
           <a href=" #">
               <i class="now-ui-icons business_money-coins"></i>

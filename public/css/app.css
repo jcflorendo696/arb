@@ -11374,7 +11374,7 @@ body{
   background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
 }
 
-.role-list-rows,
-.user-masterlist-rows{
+.role-list-rows ,
+.user-masterlist-rows td[data-toggle="modal"]{
   cursor: pointer;
 }

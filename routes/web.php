@@ -33,6 +33,7 @@ Route::post('/expense/delete','ExpensesController@deleteExpense');
 Route::get('/user-management', 'UsersController@index')->name('users');
 Route::post('/user/add', 'UsersController@addUser');
 Route::post('/user/delete', 'UsersController@deleteUser');
+Route::post('/user/update','UsersController@updateUser');
 
 Route::get('/roles', 'RolesController@index')->name('roles');
 Route::post('/role/add','RolesController@addRole');

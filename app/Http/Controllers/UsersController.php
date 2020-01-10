@@ -49,4 +49,31 @@ class UsersController extends Controller
         return redirect('/user-management');
     }
 
+    public function updateUser(Request $request){
+        
+        // response to call
+        $response = ([
+            'status' => 'success',
+            'id' => $request->input('id'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'role_id' => $request->input('role'),
+            'role_name' => $request->input('role_name'),
+            ]);
+        
+        //  array of updated data
+        $updatedUser = ([
+            'name'      => $request->input('name'),
+            'email'     => $request->input('email'),
+            'role_id'   => $request->input('role')
+        ]);
+        
+        //  push to db
+        $affected = DB::table('users')
+                        ->where('id', $request->input('id') )
+                        ->update( $updatedUser );
+
+        return response()->json( $response );
+    }
+
 }

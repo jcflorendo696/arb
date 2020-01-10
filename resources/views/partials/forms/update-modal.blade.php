@@ -15,30 +15,29 @@
             <div class="col">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form form-control" value="{{ $user->name }}">
+                    <input type="text" id="modal_name_{{ $user->id }}" class="form form-control" value="{{ $user->name }}">
+            
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form form-control" value="{{ $user->email }}">
+                    <input type="email" id="modal_email_{{ $user->id }}" class="form form-control" value="{{ $user->email }}">
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
-                <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form form-control" value="samplepassword12345">
-                </div>
-            </div>
-            <div class="col">
+            <div class="col-6">
                 <div class="form-group">
                     <label for="role">Role</label>
-                    <select name="role" id="roleDropdown" class="form form-control">
+                    <select name="role" id="modal_roleDropdown_{{ $user->id }}" class="form form-control">
                     @foreach ( $roles as $role )
-                        <option value="{{ $role->id }} ">{{ $role->role }}</option>
+                        @if( $role->id == $user->role_id )
+                          <option value="{{ $role->id }}" selected>{{ $role->role }}</option>
+                        @else 
+                          <option value="{{ $role->id }}">{{ $role->role }}</option>
+                        @endif
                     @endforeach
                     </select>
                 </div>
@@ -49,7 +48,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="btnUpdateUser" class="btn btn-primary">Save changes</button>
+        <button type="button" id="btnUpdateUser_{{ $user->id }}" value="{{ $user->id }}" class="btn btn-primary btnUpdateUser">Save Changes</button>
       </div>
     </div>
   </div>
