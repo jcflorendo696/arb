@@ -12,7 +12,7 @@ class ExpensesTableSeeder extends Seeder
     public function run()
     {
         DB::table('expenses')->insert([
-            'amount'            => '$500.00',
+            'amount'            => '50000',
             'item'              => 'Boracay Vacation',
             'category'          => 'Travel',
             'user_id'           => '2',
@@ -21,7 +21,7 @@ class ExpensesTableSeeder extends Seeder
         ]);
 
         DB::table('expenses')->insert([
-            'amount'            => '$3500.00',
+            'amount'            => '350000',
             'item'              => 'Vikings - eat all you can',
             'category'          => 'Food',
             'user_id'           => '2',
@@ -30,7 +30,7 @@ class ExpensesTableSeeder extends Seeder
         ]);
 
         DB::table('expenses')->insert([
-            'amount'            => '$696.00',
+            'amount'            => '69600',
             'item'              => 'Pancit Bilao',
             'category'          => 'Food',
             'user_id'           => '3',

@@ -84,10 +84,7 @@ btnUpdateArr.map( item => {
     btn.addEventListener('click', function(e){
         e.preventDefault();
         ajaxUpdateUser(item.value, csrf_token);
-
-
     });
-
 });
 
 function ajaxUpdateUser(user_id, csrf_token){
@@ -127,6 +124,62 @@ function ajaxUpdateUser(user_id, csrf_token){
         'email' : email.value,
         'role' : role.value,
         'role_name' : role.options[role.selectedIndex].text
+    }
+
+    xhr.send( JSON.stringify(data) );
+}
+
+
+
+/*-----------------------------------------
+/   Update Expense Category - AJAX
+/-----------------------------------------*/
+let btnUpdateCat = document.getElementsByClassName('btnUpdateCateg');
+let btnUpdateCatArr = Array.from(btnUpdateCat);
+
+btnUpdateCatArr.map( item => {
+    let btn = document.getElementById(item.id);
+    btn.addEventListener('click', function(e){
+        e.preventDefault();
+        ajaxUpdateCategory(item.value, csrf_token);
+    });
+});
+
+
+function ajaxUpdateCategory(user_id, csrf_token){
+
+    let name    =   document.getElementById('name_' + user_id);
+    let desc   =   document.getElementById('desc_' + user_id);
+    
+
+    let xhr = new XMLHttpRequest();
+
+
+    xhr.open('POST','/expenses/categories/update', true);
+    
+    xhr.setRequestHeader('Content-type','application/json');
+    xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
+
+    xhr.onload = function(){
+        if( this.status == 200 ){
+            let data = JSON.parse(this.responseText);
+            
+            console.log(data);
+
+            let name = document.getElementById('catname_' + user_id);
+            name.innerHTML =  data.name;
+            let desc = document.getElementById('catdesc_' + user_id);
+            desc.innerHTML =  data.description;
+
+
+            $('#generic-modal' + user_id).modal('hide');
+        }
+    };
+
+    let data = {
+        'id' : user_id,
+        'name' : name.value,
+        'description' : desc.value
     }
 
     xhr.send( JSON.stringify(data) );

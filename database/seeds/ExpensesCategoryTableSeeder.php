@@ -12,13 +12,15 @@ class ExpensesCategoryTableSeeder extends Seeder
     public function run()
     {
         DB::table('expenses_categories')->insert([
-            'name'            => 'Travel',
+            'name'              => 'Travel',
+            'description'       => 'Expenses for being a citizen of the world!',
             'created_at'        => date("Y-m-d H:i:s"),
             'updated_at'        => date("Y-m-d H:i:s")
         ]);
 
         DB::table('expenses_categories')->insert([
             'name'            => 'Food',
+            'description'       => 'Expenses for being a certified foodie!',
             'created_at'        => date("Y-m-d H:i:s"),
             'updated_at'        => date("Y-m-d H:i:s")
         ]);

@@ -7,7 +7,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <h3>Roles Management</h3>
+                <h4 class="card-title">Roles Management</h4>
+                <p class="category">Customize system roles and permissions.</p>
             </div>
 
 

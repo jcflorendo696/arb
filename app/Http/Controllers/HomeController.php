@@ -31,11 +31,16 @@ class HomeController extends Controller
 
         $expenses = User::find( Auth::user()->id )->expenses;
         $cat = Expenses_Categories::all();
-        //$totalAmount
+
+        $total = 0;
+        foreach($expenses as $expense){
+            $total = $total + $expense->amount;
+        }
 
         $data = ([
             'expenses' => $expenses,
-            'category' => $cat
+            'category' => $cat,
+            'total' => $total
         ]);
 
         return view('my-expenses', $data);

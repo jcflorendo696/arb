@@ -11375,6 +11375,28 @@ body{
 }
 
 .role-list-rows ,
+.expenses-category-rows td[data-toggle="modal"],
 .user-masterlist-rows td[data-toggle="modal"]{
   cursor: pointer;
+}
+
+.table{
+  color: #6e6e6e !important;
+}
+
+//experimental
+.sidebar .sidebar-wrapper>.nav [data-toggle=collapse]~div>ul>li>a .sidebar-mini-icon{
+  text-transform: uppercase;
+    width: 34px;
+    margin-right: 10px;
+    margin-left: 0;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+    position: relative;
+    float: left;
+    z-index: 1;
+    display: inherit;
+    line-height: 24px;
+    color: hsla(0,0%,100%,.5);
 }

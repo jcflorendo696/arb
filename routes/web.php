@@ -17,27 +17,43 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@dashboard')->middleware('auth')->name('dashboard');
+Route::middleware(['auth'])->group( function(){
+
+    Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+    
+
+    /**
+     * Handle expenses 'routes' - member side.
+     */
+    Route::post('/expense/add','ExpensesController@addExpense');
+    Route::post('/expense/delete','ExpensesController@deleteExpense');
 
 
-Route::get('/settings', 'SettingsController@index')->name('settings');
-/**
- * Handle expenses 'routes' - member side.
- */
-Route::post('/expense/add','ExpensesController@addExpense');
-Route::post('/expense/delete','ExpensesController@deleteExpense');
+    /**
+     * Routes - 'admin' side
+     */
+    Route::get('/user-management', 'UsersController@index')->name('users');
+    Route::post('/user/add', 'UsersController@addUser');
+    Route::post('/user/delete', 'UsersController@deleteUser');
+    Route::post('/user/update','UsersController@updateUser');
 
-/**
- * Routes - 'admin' side
- */
-Route::get('/user-management', 'UsersController@index')->name('users');
-Route::post('/user/add', 'UsersController@addUser');
-Route::post('/user/delete', 'UsersController@deleteUser');
-Route::post('/user/update','UsersController@updateUser');
+    Route::get('/roles', 'RolesController@index')->name('roles');
+    Route::post('/role/add','RolesController@addRole');
+    Route::post('/role/delete','RolesController@deleteRole');
+    Route::post('/role/update','RolesController@updateRole');
 
-Route::get('/roles', 'RolesController@index')->name('roles');
-Route::post('/role/add','RolesController@addRole');
-Route::post('/role/delete','RolesController@deleteRole');
-Route::post('/role/update','RolesController@updateRole');
 
-Route::post('/settings/changepass','SettingsController@updatePassword');
+    /**
+     * Expenses - 'admin' side
+     */
+    Route::match(['get','post'], '/expenses/categories','ExpensesController@index')->name('expenses-category');
+    Route::post('/expenses/categories/delete','ExpensesController@deleteExpenseCategory');
+    Route::post('/expenses/categories/update','ExpensesController@updateExpenseCategory');
+
+    /**
+     * Settings - 'admin/member' side
+     */
+    Route::get('/settings', 'SettingsController@index')->name('settings');
+    Route::post('/settings/changepass','SettingsController@updatePassword');
+
+});

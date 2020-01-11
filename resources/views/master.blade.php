@@ -38,7 +38,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body>
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--
@@ -67,34 +67,71 @@
           </li>
         
           @if ( Auth::user()->getRole->role == "Administrator" )
-          @if( Route::current()->getName() == 'users')
-          <li class="active">
-          @else
-          <li>
-          @endif
-          <a href=" {{ route('users') }}">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p> Users </p>
-            </a>
-          </li>
+              @if( Route::current()->getName() == 'users')
+              <li class="active">
+              @else
+              <li>
+              @endif
+              <a href=" {{ route('users') }}">
+                  <i class="now-ui-icons design_bullet-list-67"></i>
+                  <p> Users </p>
+                </a>
+              </li>
           
-          @if( Route::current()->getName() == 'roles')
-          <li class="active">
-          @else
-          <li>
-          @endif
-          <a href=" {{ route('roles') }}">
-              <i class="now-ui-icons users_single-02"></i>
-              <p> Roles </p>
-            </a>
-          </li>
+              @if( Route::current()->getName() == 'roles')
+              <li class="active">
+              @else
+              <li>
+              @endif
+              <a href=" {{ route('roles') }}">
+                  <i class="now-ui-icons users_single-02"></i>
+                  <p> Roles </p>
+                </a>
+              </li>
 
-          <li>
-          <a href=" # ">
+              @if( Route::current()->getName() == 'expenses-category')
+              <li class="active">
+              @else
+              <li>
+              @endif
+              <a href=" {{ route('expenses-category') }} ">
+                  <i class="now-ui-icons business_chart-bar-32"></i>
+                  <p>Expense Categories</p>
+                </a>
+              </li>
+
+          <!-- <li>
+          <a href="#multiOptions" data-toggle="collapse" class="collapsed" aria-expanded="false">
               <i class="now-ui-icons business_chart-bar-32"></i>
-              <p>Expense Categories</p>
+              <p>Multi Option <b class="caret"></b></p>
             </a>
-          </li>
+            <div class="collapse" id="multiOptions" >
+            <ul class="nav">
+                        <li>
+                            <a href="../examples/pages/pricing.html">
+                                <span class="sidebar-mini-icon">P</span>
+                                <span class="sidebar-normal"> Pricing </span>
+                            </a>
+                        </li>
+                      
+                        <li>
+                            <a href="../examples/pages/rtl.html">
+                                <span class="sidebar-mini-icon">RS</span>
+                                <span class="sidebar-normal"> RTL Support </span>
+                            </a>
+                        </li>
+                      
+                        <li>
+                            <a href="../examples/pages/invoice.html">
+                                <span class="sidebar-mini-icon">I</span>
+                                <span class="sidebar-normal"> Invoice </span>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+          </li> -->
+
+          
           <!-- 
           <li>
           <a href=" #">
@@ -176,15 +213,11 @@
       </div>
 
         <div class="content">
-
-            @if( Auth::user()->getRole->role == 'Administrator')
+                @yield('myexpenses')
                 @yield('users-mgt')
                 @yield('roles')
                 @yield('settings_page')
-            @else
-                @yield('myexpenses')
-                @yield('settings_page')
-            @endif
+                @yield('expenses-category')
         </div>
 
 
