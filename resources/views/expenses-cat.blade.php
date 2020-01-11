@@ -50,8 +50,8 @@
                     <form action="#" method="post" class="form-inline float-right mb-5 mr-4">
                         {{ csrf_field() }}
                         <div class="form-group mr-3">
-                            <input type="text" name="name"  class="form-control mr-2" placeholder="Category Name" required>
-                            <input type="text" name="description" class="form-control" placeholder="Description" required>
+                            <input type="text" name="name"  class="form-control mr-2" placeholder="Category Name" >
+                            <input type="text" name="description" class="form-control" placeholder="Description" >
                         </div>
                         
                         <div class="form-group">
@@ -59,6 +59,8 @@
                         </div>
                     </form>
                     </div>
+
+                    @include('partials.error')
                 </div>
             </div>
 

@@ -30,27 +30,14 @@
       
             @if( Route::current()->getName() == "dashboard" )
                 @include('partials.forms.add_expense')
+                @include('partials.error')
             @elseif( Route::current()->getName() == "users")
                 @include('partials.forms.add_user')
+                @include('partials.error')
             @elseif ( Route::current()->getName() == 'expenses-category')
                 @include('partials.forms.update-category')
             @endif
-              
 
-            <div class="row errors">
-                <div class="col-8 offset-2">
-                  @if( $errors->any() )
-                      <div class="alert alert-danger fade show alert-dismissible">
-                          @foreach( $errors->all() as $error )
-                              <p>{{ $error }}</p>
-                          @endforeach
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                  @endif
-                </div>
-            </div>
       </div>
       
       <div class="modal-footer">
