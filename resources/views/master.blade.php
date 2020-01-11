@@ -40,210 +40,22 @@
 
 <body>
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          EM
-        </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Expense Manager
-        </a>
-      </div>
-      <div class="sidebar-wrapper" id="sidebar-wrapper">
-        <ul class="nav">
-
-          @if( Route::current()->getName() == 'dashboard')
-          <li class="active">
-          @else
-          <li class="">
-          @endif
-          <a href=" {{ route('dashboard') }}">
-              <i class="now-ui-icons design_app"></i>
-              <p>My Expenses</p>
-            </a>
-          </li>
-        
-          @if ( Auth::user()->getRole->role == "Administrator" )
-              @if( Route::current()->getName() == 'users')
-              <li class="active">
-              @else
-              <li>
-              @endif
-              <a href=" {{ route('users') }}">
-                  <i class="now-ui-icons design_bullet-list-67"></i>
-                  <p> Users </p>
-                </a>
-              </li>
-          
-              @if( Route::current()->getName() == 'roles')
-              <li class="active">
-              @else
-              <li>
-              @endif
-              <a href=" {{ route('roles') }}">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p> Roles </p>
-                </a>
-              </li>
-
-              @if( Route::current()->getName() == 'expenses-category')
-              <li class="active">
-              @else
-              <li>
-              @endif
-              <a href=" {{ route('expenses-category') }} ">
-                  <i class="now-ui-icons business_chart-bar-32"></i>
-                  <p>Expense Categories</p>
-                </a>
-              </li>
-
-          <!-- <li>
-          <a href="#multiOptions" data-toggle="collapse" class="collapsed" aria-expanded="false">
-              <i class="now-ui-icons business_chart-bar-32"></i>
-              <p>Multi Option <b class="caret"></b></p>
-            </a>
-            <div class="collapse" id="multiOptions" >
-            <ul class="nav">
-                        <li>
-                            <a href="../examples/pages/pricing.html">
-                                <span class="sidebar-mini-icon">P</span>
-                                <span class="sidebar-normal"> Pricing </span>
-                            </a>
-                        </li>
-                      
-                        <li>
-                            <a href="../examples/pages/rtl.html">
-                                <span class="sidebar-mini-icon">RS</span>
-                                <span class="sidebar-normal"> RTL Support </span>
-                            </a>
-                        </li>
-                      
-                        <li>
-                            <a href="../examples/pages/invoice.html">
-                                <span class="sidebar-mini-icon">I</span>
-                                <span class="sidebar-normal"> Invoice </span>
-                            </a>
-                        </li>
-                    </ul>
-            </div>
-          </li> -->
-
-          
-          <!-- 
-          <li>
-          <a href=" #">
-              <i class="now-ui-icons business_money-coins"></i>
-              <p>Expenses</p>
-            </a>
-          </li> -->
-          @else
-          @endif
-
-
-        </ul>
-      </div>
-    </div>
+    @include('partials.sidebar')
     <div class="main-panel" id="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand" href="#pablo">Hello {{ Auth::user()->name}}!</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons users_circle-08"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{ route('settings') }}">{{ __('Account Settings') }}</a>
-                  <a class="dropdown-item" href=" {{ route('logout') }} " onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
+      @include('partials.navbar')
       <div class="panel-header panel-header-lg">
         <canvas id="bigDashboardChart"></canvas>
       </div>
 
-        <div class="content">
-                @yield('myexpenses')
-                @yield('users-mgt')
-                @yield('roles')
-                @yield('settings_page')
-                @yield('expenses-category')
-        </div>
+      <div class="content">
+              @yield('myexpenses')
+              @yield('users-mgt')
+              @yield('roles')
+              @yield('settings_page')
+              @yield('expenses-category')
+      </div>
 
-
-      <footer class="footer">
-        <div class=" container-fluid ">
-          <nav>
-            <ul>
-              <li>
-                <a href="https://www.jcflorendo.com" target="_blank">
-                   /Jc Florendo Web Development
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.jcflorendo.com" target="_blank">
-                  /Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright" id="copyright">
-            &copy; <script>
-              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script> - Expense Manager.
-          </div>
-        </div>
-      </footer>
+      @include('partials.footer')
     </div>
   </div>
 

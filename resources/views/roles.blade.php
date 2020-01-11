@@ -51,8 +51,8 @@
                     <form action="/role/add" method="post" class="form-inline float-right mb-5 mr-5">
                         {{ csrf_field() }}
                         <div class="form-group mr-3">
-                            <input type="text" name="name"  class="form-control mr-2" placeholder="Role Name" required>
-                            <input type="text" name="description" class="form-control" placeholder="Description" required>
+                            <input type="text" name="name"  class="form-control mr-2" placeholder="Role Name" >
+                            <input type="text" name="description" class="form-control" placeholder="Description" >
                         </div>
                         
                         <div class="form-group">
@@ -63,17 +63,7 @@
 
 
 
-                    @if( $errors->any() )
-                    <div class="alert alert-danger fade show alert-with-icon alert-dismissible">
-                            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
-                            @foreach ($errors->all() as $error)
-                                <p data-notify="message">- {{ $error }}</p>
-                            @endforeach
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-                    @endif
+                @include('partials.error')
                 </div>
 
             </div> <!-- .card-body end -->
