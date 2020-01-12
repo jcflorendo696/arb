@@ -4,9 +4,9 @@
 
 
 @if( Route::current()->getName() == "expenses-category" )
-<div class="modal fade" id="generic-modal{{ $cat->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="generic-modal{{ $cat->id }}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 @else
-<div class="modal fade" id="generic-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="generic-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 @endif
 
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -30,7 +30,6 @@
       
             @if( Route::current()->getName() == "dashboard" )
                 @include('partials.forms.add_expense')
-                @include('partials.error')
             @elseif( Route::current()->getName() == "users")
                 @include('partials.forms.add_user')
                 @include('partials.error')
@@ -40,19 +39,19 @@
 
       </div>
       
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          {{ csrf_field() }}
-          @if( Route::current()->getName() == "users" )
-        <button type="submit" id="btnCreateUser" class="btn btn-primary">Create User</button>
-          @elseif( Route::current()->getName() == "dashboard" )
-        <button type="submit" id="btnAddExpense" class="btn btn-primary">Add Expense</button>
-          @elseif( Route::current()->getName() == "expenses-category" )
-        <button type="submit" id="{{ $cat->id }}" value="{{ $cat->id }}" class="btn btn-primary btnUpdateCateg">Save Changes</button>
-          @endif
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            {{ csrf_field() }}
+            @if( Route::current()->getName() == "users" )
+          <button type="submit" id="btnCreateUser" class="btn btn-primary">Create User</button>
+            @elseif( Route::current()->getName() == "dashboard" )
+          <button type="submit" id="btnAddExpense" class="btn btn-primary">Add Expense</button>
+            @elseif( Route::current()->getName() == "expenses-category" )
+          <button type="submit" id="{{ $cat->id }}" value="{{ $cat->id }}" class="btn btn-primary btnUpdateCateg">Save Changes</button>
+            @endif
+        </div>
       </div>
-      </div>
-      
+      </form> <!-- closings tag form. Opening tag dynamic in the partials/forms/..-->
     </div>
   </div>
 </div>

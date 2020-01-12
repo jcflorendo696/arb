@@ -31,21 +31,20 @@
 
                         <tbody>
                             @foreach( $expenses as $expense )
-                            <tr>
-
-                                
+                            <tr>    
                                 <td> 
                                     <form action="/expense/delete" method="post">
                                         {{ csrf_field() }}
                                         <button type="submit" id="btnDelete" value="{{ $expense->id }}" class="btn btn-danger btn-sm" name="btnDelete">Delete <i class="fas fa-trash-alt"></i></button> 
                                     </form>
                                 </td>
-                                <td> {{ $expense->item }} </td>
+                                <td data-toggle="modal" data-target="#expense_modal_{{ $expense->id }}"> {{ $expense->item }} </td>
                                 <td> {{ $expense->category }} </td>
                                 <td> ${{ number_format($expense->amount,'2') }}</td>
                             </tr>
+                            
                             @endforeach
-                            @include('partials.modal')
+                            
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -56,13 +55,15 @@
                         </tbody>
                     </table>
                     @endif
+                    @include('partials.modal')
+                    @include('partials.error')
                 </div>
             </div>
         </div>
     </div>
 
     
-</div>
+<!-- </div> Commenting this out. Causes layout issues when activated. Jan. 12, 2020 - Jc. Florendo -->
 
 @endsection
    

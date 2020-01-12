@@ -26,7 +26,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {   
 
         $expenses = User::find( Auth::user()->id )->expenses;
@@ -44,5 +44,7 @@ class HomeController extends Controller
         ]);
 
         return view('my-expenses', $data);
+        
+
     }
 }

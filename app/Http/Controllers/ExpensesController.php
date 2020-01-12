@@ -16,6 +16,11 @@ class ExpensesController extends Controller
      */
     public function addExpense(Request $request){
 
+        $validate = $request->validate([
+            'description' => ['required'],
+            'amount'        => ['required']
+        ]);
+
         // dd( $request->category_id );        
         DB::table('expenses')->insert([
             'item' => $request->description,

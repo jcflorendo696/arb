@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group( function(){
 
-    Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+    Route::match(['get','post'],'/dashboard', 'HomeController@dashboard')->name('dashboard');
     
 
     /**
