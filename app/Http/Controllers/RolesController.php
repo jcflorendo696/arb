@@ -27,7 +27,9 @@ class RolesController extends Controller
 
         DB::table('roles')->insert([
             'role'=> $request->name,
-            'description'=> $request->description
+            'description'=> $request->description,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         return redirect('roles');

@@ -39,6 +39,8 @@ class UsersController extends Controller
             'email'     => $request->email,
             'password'  => Hash::make($request->password),
             'role_id'   => $request->role,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         return redirect('/user-management');

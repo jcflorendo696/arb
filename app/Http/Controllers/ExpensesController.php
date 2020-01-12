@@ -27,6 +27,8 @@ class ExpensesController extends Controller
             'user_id' => Auth::user()->id,
             'amount' => $request->amount,
             'category' => $request->category_id,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         return redirect('/dashboard');
