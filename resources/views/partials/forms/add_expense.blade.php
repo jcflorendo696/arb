@@ -1,11 +1,11 @@
 <form action="/expense/add" method="post">
     <div class="row">
         <div class="col">
-            <div class="form-group"><input type="text" class="form-control" name="amount" placeholder="Amount..." ></div>
+            <div class="form-group"><input type="text" class="form-control" name="amount" placeholder="Amount..." required></div>
         </div>
 
         <div class="col">
-            <div class="form-group"><input type="text" class="form-control" name="description" placeholder="Description..." ></div>
+            <div class="form-group"><input type="text" class="form-control" name="description" placeholder="Description..." required></div>
         </div>
     </div>
 
