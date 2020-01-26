@@ -56,4 +56,14 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/settings', 'SettingsController@index')->name('settings');
     Route::post('/settings/changepass','SettingsController@updatePassword');
 
+
+    /**
+     * DEVELOPMENT - FB LOGIN
+     */
+    Route::get('/login/facebook', 'SocialiteLoginController@redirectToProvider');
+    Route::get('/login/facebook/callback', 'SocialiteLoginController@handleProviderCallback');
+
+    Route::get('/login/google', 'SocialiteLoginController@redirectToProviderGoogle');
+    Route::get('/login/google/callback', 'SocialiteLoginController@handleProviderCallbackGoogle');
+
 });

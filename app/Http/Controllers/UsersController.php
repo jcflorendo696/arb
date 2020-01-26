@@ -25,7 +25,7 @@ class UsersController extends Controller
     }
 
     public function addUser(Request $request){
-        //dd( $request );
+    //dd( $request );
         $validateUser = $request->validate([
             'name'      =>  ['required'],
             'email'     =>  ['required','unique:users'],

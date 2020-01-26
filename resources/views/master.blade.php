@@ -53,6 +53,7 @@
               @yield('roles')
               @yield('settings_page')
               @yield('expenses-category')
+              
       </div>
 
       @include('partials.footer')
